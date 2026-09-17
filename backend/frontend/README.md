@@ -1,5 +1,23 @@
-# Vue 3 + Vite
+# Praktikum Pemrograman Web 2
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## Deskripsi
+Aplikasi web sederhana yang dikembangkan untuk memenuhi tugas mata kuliah Pemrograman Web 2. Aplikasi ini menggunakan konsep *decoupled architecture* dengan Laravel sebagai RESTful API di sisi backend dan Vue.js yang dibundel menggunakan Vite di sisi frontend.
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+## Teknologi
+- **Backend:** PHP 8.x, Laravel 10.x
+- **Frontend:** Vue.js 3, Vite 5.x
+- **Package Manager:** Composer, NPM (Node.js v18)
+- **Database:** MySQL (Laragon)
+- **Version Control:** Git & GitHub
+
+## Prasyarat
+Sebelum menjalankan proyek, pastikan perangkat kamu sudah terinstal:
+- PHP >= 8.1
+- Composer
+- Node.js (v18.x) & NPM
+- Laragon / XAMPP (MySQL Server)
+
+## Instalasi Backend
+1. Masuk ke folder backend:
+   ```bash
+   cd backend
