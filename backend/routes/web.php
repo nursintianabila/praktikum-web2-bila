@@ -13,6 +13,11 @@ Route::get('/tickets/{ticket}', [TicketController::class, 'show'])
 Route::get('/api/tickets/{ticket}', [TicketController::class, 'showJson'])
     ->whereNumber('ticket')
     ->name('tickets.show-json');
+// Pola constraint untuk memastikan {ticket} berupa angka
+Route::pattern('ticket', '[0-9]+');
+
+// Resource route untuk 7 aksi CRUD tiket
+Route::resource('tickets', TicketController::class);
 /*
 |--------------------------------------------------------------------------
 | Web Routes

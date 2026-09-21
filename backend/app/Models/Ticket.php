@@ -18,7 +18,6 @@ class Ticket extends Model
         'is_urgent',
     ];
 
-    // Menggunakan properti $casts agar kompatibel di semua versi Laravel/PHP
     protected $casts = [
         'is_urgent' => 'boolean',
     ];
