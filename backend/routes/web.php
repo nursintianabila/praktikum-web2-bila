@@ -1,23 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TicketController;
 
-Route::get('/tickets', [TicketController::class, 'index'])
-    ->name('tickets.index');
-
-Route::get('/tickets/{ticket}', [TicketController::class, 'show'])
-    ->whereNumber('ticket')
-    ->name('tickets.show');
-
-Route::get('/api/tickets/{ticket}', [TicketController::class, 'showJson'])
-    ->whereNumber('ticket')
-    ->name('tickets.show-json');
-// Pola constraint untuk memastikan {ticket} berupa angka
-Route::pattern('ticket', '[0-9]+');
-
-// Resource route untuk 7 aksi CRUD tiket
-Route::resource('tickets', TicketController::class);
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,3 +16,11 @@ Route::resource('tickets', TicketController::class);
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Route tiket lama dinonaktifkan untuk migrasi ke REST API (Pertemuan 5)
+/*
+Route::get('/tickets', [TicketController::class, 'index'])->name('tickets.index');
+Route::get('/tickets/{ticket}', [TicketController::class, 'show'])->whereNumber('ticket')->name('tickets.show');
+Route::get('/api/tickets/{ticket}', [TicketController::class, 'showJson'])->whereNumber('ticket')->name('tickets.show-json');
+Route::resource('tickets', TicketController::class);
+*/

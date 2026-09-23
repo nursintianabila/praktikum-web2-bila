@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role', // Pertahankan atribut tambahan jika ada dari Pertemuan 3/4
     ];
 
     /**
@@ -41,15 +42,6 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'is_admin' => 'boolean',
     ];
-
-    public function tickets()
-    {
-        return $this->hasMany(Ticket::class);
-    }
-
-    public function comments()
-    {
-        return $this->hasMany(Comment::class);
-    }
 }
