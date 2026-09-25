@@ -11,14 +11,16 @@ use Illuminate\Support\Facades\Route;
 Route::pattern('ticket', '[0-9]+');
 
 Route::prefix('v1')->name('api.v1.')->group(function () {
-    // Endpoint Login dengan rate limiter khusus (5x/menit)
-    Route::post('auth/login', [AuthController::class, 'login'])
-        ->middleware('throttle:api-login')
-        ->name('login');
+
+    // Login token lama dinonaktifkan untuk SPA.
+    // Login sekarang menggunakan POST /login pada routes/web.php.
 
     // Group Route Terproteksi Sanctum & Rate Limiter API V1 (60x/menit)
     Route::middleware(['auth:sanctum', 'throttle:api-v1'])->group(function () {
-        Route::post('auth/logout', [AuthController::class, 'logout'])->name('logout');
+
+        // Logout token lama dinonaktifkan untuk SPA.
+        // Logout sekarang menggunakan POST /logout pada routes/web.php.
+
         Route::get('me', [AuthController::class, 'me'])->name('me');
 
         // Endpoint Referensi Kategori
@@ -31,6 +33,7 @@ Route::prefix('v1')->name('api.v1.')->group(function () {
         // Endpoint Laporan Ringkasan (Khusus Admin)
         Route::get('reports/summary', function () {
             Gate::authorize('view-ticket-summary');
+
             return response()->json([
                 'data' => ['ticket_count' => Ticket::count()]
             ]);
